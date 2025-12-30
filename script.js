@@ -688,13 +688,6 @@ function setupBackground() {
         video: appearance.backgroundVideo,
         image: appearance.backgroundImage
     });
-    // Setup particles.js for background particles (toggleable)
-    setupBackgroundParticles();
-    // Apply overlay
-    if (overlay) {
-        const overlayConfig = appearance.backgroundOverlay || {};
-        overlay.style.background = `rgba(${hexToRgb(overlayConfig.color || '#000000')}, ${overlayConfig.opacity || 0.4})`;
-    }
     if (backgroundType === 'video' && backgroundVideo && appearance.backgroundVideo) {
         // Support both URLs and local files
         let videoSrc = appearance.backgroundVideo;
@@ -812,86 +805,12 @@ function applyCursorEffects() {
     document.body.style.cursor = 'auto';
     const type = cursorEffects.type || 'none';
     console.log('Setting up cursor effect:', type);
-    if (type === 'particles') {
-        initParticleCursor(cursorEffects.particles || {});
-    } else if (type === 'ghost') {
+    if (type === 'ghost') {
         initGhostCursor(cursorEffects.ghost || {});
     } else if (type === 'trail') {
         initTrailCursor();
     }
     // Default cursor always remains visible
-}
-function initParticleCursor(settings) {
-    const canvas = document.getElementById('cursor-canvas');
-    if (!canvas) {
-        console.error('Cursor canvas not found');
-        return;
-    }
-    // Make sure canvas is visible and on top
-    canvas.style.display = 'block';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '9999';
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const particles = [];
-    const particleCount = settings.count || 50;
-    const color = settings.color || '#00aaff';
-    const size = settings.size || 3;
-    const speed = settings.speed || 0.5;
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * size + 1;
-            this.speedX = (Math.random() - 0.5) * speed;
-            this.speedY = (Math.random() - 0.5) * speed;
-        }
-        update() {
-            const dx = mouseX - this.x;
-            const dy = mouseY - this.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 100) {
-                this.x += (dx / distance) * speed * 2;
-                this.y += (dy / distance) * speed * 2;
-            } else {
-                this.x += this.speedX;
-                this.y += this.speedY;
-            }
-            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-        }
-        draw() {
-            ctx.fillStyle = color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-    // Listen to mousemove on document, not just specific elements
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    }, true); // Use capture phase to catch all events
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
-        });
-        requestAnimationFrame(animate);
-    }
-    animate();
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-    console.log('Particle cursor initialized');
 }
 function initGhostCursor(settings) {
     const customCursor = document.getElementById('custom-cursor');
