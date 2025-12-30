@@ -1,0 +1,245 @@
+{
+  // ============================================
+  // GENERAL SETTINGS
+  // ============================================
+  "general": {
+    // Page title (shown in browser tab)
+    "pageTitle": "Iceyy - LinkTree",
+    // Meta description for SEO
+    "metaDescription": "Connect with Iceyy - Python Developer"
+  },
+  // ============================================
+  // APPEARANCE SETTINGS
+  // ============================================
+  "appearance": {
+    // Background type: "image", "video", or "color"
+    "backgroundType": "video",
+    // Background image (if backgroundType is "image")
+    // Can be local file (e.g., "background.jpg") or full URL
+    "backgroundImage": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80",
+    // Background video (if backgroundType is "video")
+    // Can be local file (e.g., "background.mp4") or full URL
+    "backgroundVideo": "murder_in_my_mind_background.mp4",
+    // Background color (if backgroundType is "color" or as fallback)
+    "backgroundColor": "#000000",
+    // Background overlay color and opacity (0-1)
+    "backgroundOverlay": {
+      "color": "#000000",
+      "opacity": 0.4
+    },
+    // Custom font (Google Fonts name or local font)
+    "fontFamily": "Inter",
+    // Primary text color
+    "textColor": "#ffffff",
+    // Secondary text color (for descriptions, etc.)
+    "secondaryTextColor": "#b0b0b0",
+    // Accent color (for highlights, badges, etc.)
+    "accentColor": "#00aaff",
+    // Background particles (particles.js) - toggleable
+    "backgroundParticles": {
+      // Enable/disable background particles
+      "enabled": true,
+      // Number of particles
+      "count": 80,
+      // Particle color
+      "color": "#00aaff",
+      // Particle size
+      "size": 3,
+      // Particle speed
+      "speed": 2,
+      // Particle opacity
+      "opacity": 0.5
+    }
+  },
+  // ============================================
+  // PROFILE SETTINGS
+  // ============================================
+  "profile": {
+    // Profile picture (local file or full URL)
+    "profileImage": "images/a_2e366035e42f40b9a501a39622f75931.gif",
+    // Display name
+    "displayName": "Iceyy",
+    // Username (shown below display name)
+    "username": "@iceyy4400",
+    // Bio/Description with typewriter effect
+    // Can be a single string or array of strings for looping typewriter
+    "bio": [
+      "Web Development and Designing",
+      "FiveM Developer",
+      "Python Coding",
+      "Discord Bot Development",
+      "Professional Gambler 🎰🎰"
+    ],
+    // Enable typewriter effect for bio
+    "typewriterEnabled": true,
+    // Typewriter speed (milliseconds per character)
+    // Lower = faster, Higher = slower
+    "typewriterSpeed": 100,
+    // Delay before erasing (milliseconds)
+    "typewriterEraseDelay": 2000,
+    // Erase speed (milliseconds per character, usually faster than type speed)
+    "typewriterEraseSpeed": 50,
+    // Location
+    "location": "Slovakia",
+    
+    // Display name animations (optional)
+    "nameAnimations": {
+      // Glow effect
+      "glow": {
+        "enabled": true
+      },
+      // Wave effect (per letter)
+      "wave": {
+        "enabled": true,
+        "minSpeed": 2,
+        "maxSpeed": 3.5
+      }
+    }
+  },
+  // ============================================
+  // BADGES SETTINGS
+  // ============================================
+  "badges": [
+    {
+      // Badge icon - Use Iconify icon name (e.g., "mdi:star", "fa6-solid:gem") or local file/URL
+      // Iconify format: "collection:icon-name" (e.g., "mdi:github", "fa6-brands:discord")
+      // Browse icons at: https://iconify.design/
+      "icon": "mdi:star",
+      // Badge text (shown on hover)
+      "text": "Verified Developer",
+      // Badge color (optional, for styling)
+      "color": "#00ff00"
+    },
+    {
+      "icon": "mdi:diamond-stone",
+      "text": "Premium Member",
+      "color": "#ff00ff"
+    },
+    {
+      "icon": "mdi:trophy",
+      "text": "Top Contributor",
+      "color": "#00aaff"
+    }
+  ],
+  // ============================================
+  // LINKS SETTINGS
+  // ============================================
+  "links": [
+    {
+      // Link title
+      "title": "GitHub",
+      // Link URL
+      "url": "https://github.com/iceyy",
+      // Custom icon - Use Iconify icon name (e.g., "mdi:github") or local file/URL
+      // Iconify format: "collection:icon-name" (e.g., "mdi:github", "ic:baseline-discord")
+      // Browse icons at: https://iconify.design/
+      // Leave empty to use default icon based on platform
+      "icon": "mdi:github",
+      // Hover text (shown on hover)
+      "hoverText": "Check out my code!",
+      // Link color (optional)
+      "color": "#ffffff"
+    },
+    {
+      "title": "Discord",
+      "url": "https://discord.gg/example",
+      "icon": "ic:baseline-discord",
+      "hoverText": "Join our community!",
+      "color": "#5865F2"
+    },
+    {
+      "title": "Portfolio",
+      "url": "https://iceyy.dev",
+      "icon": "fluent:globe-12-regular",
+      "hoverText": "View my work",
+      "color": "#00aaff"
+    },
+    {
+      "title": "Instagram",
+      "url": "https://instagram.com/iceyy",
+      "icon": "mdi:instagram",
+      "hoverText": "Follow me on Instagram",
+      "color": "#E4405F"
+    }
+  ],
+  // ============================================
+  // MUSIC PLAYER SETTINGS (Optional)
+  // ============================================
+  "musicPlayer": {
+    // Enable music player
+    "enabled": true,
+    // Song title
+    "songTitle": "Murder in My Mind",
+    // Artist name
+    "artist": "KORDHELL",
+    // Album art (local file or full URL)
+    "albumArt": "images/murder_in_my_mind.jpg",
+    // Audio file (local file or full URL)
+    "audioFile": "murder_in_my_mind.mp3",
+    // Auto-play (will be muted by browser policy)
+    "autoplay": true,
+    // Loop
+    "loop": true
+  },
+  // ============================================
+  // CURSOR EFFECTS
+  // ============================================
+  "cursorEffects": {
+    // Enable custom cursor effects
+    "enabled": true,
+    // Cursor effect type: "particles", "ghost", "trail", "none"
+    "type": "trail",
+    // Particle settings (if type is "particles")
+    "particles": {
+      // Number of particles
+      "count": 200,
+      // Particle color
+      "color": "#00aaff",
+      // Particle size
+      "size": 3,
+      // Particle speed
+      "speed": 0.5
+    },
+    // Ghost cursor settings (if type is "ghost")
+    "ghost": {
+      // Ghost cursor size
+      "size": 20,
+      // Ghost cursor color
+      "color": "#00aaff",
+      // Ghost cursor opacity
+      "opacity": 0.3
+    }
+  },
+  // ============================================
+  // ANIMATIONS
+  // ============================================
+  "animations": {
+    // Loading animation type: "fade", "slide", "spin", "pulse", "none"
+    "loadingType": "fade",
+    // Loading animation duration (milliseconds)
+    "loadingDuration": 1000,
+    // Link hover animation: "scale", "glow", "slide", "bounce", "none"
+    "linkHoverAnimation": "glow",
+    // Badge hover animation: "rotate", "pulse", "glow", "none"
+    "badgeHoverAnimation": "pulse",
+    // Page entrance animation: "fadeIn", "slideUp", "zoomIn", "none"
+    "pageEntrance": "zoomIn",
+    // Animation duration multiplier (1.0 = normal, 0.5 = faster, 2.0 = slower)
+    "speedMultiplier": 1.0
+  },
+  // ============================================
+  // VIDEO/AUDIO SETTINGS
+  // ============================================
+  "media": {
+    // Mute background video
+    "muteVideo": true,
+    // Loop background video
+    "loopVideo": true,
+    // Play separate audio with video
+    "playAudioWithVideo": true,
+    // Audio file to play with video (place in config/videos/ or config/audio/)
+    "audioFile": "audio/murder_in_my_mind.mp3",
+    // Video volume (0-1, only if muteVideo is false)
+    "videoVolume": 0.3
+  }
+}

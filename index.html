@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>LinkTree</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <p class="loading-text">Click to continue...</p>
+        </div>
+    </div>
+
+    <div id="main-container" class="main-container hidden">
+        <div id="background-container" class="background-container">
+            <div id="particles-js" class="particles-js"></div>
+            <div class="background-overlay"></div>
+            <video id="background-video" class="background-video" muted loop playsinline></video>
+            <img id="background-image" class="background-image" alt="Background">
+            <audio id="background-audio" class="background-audio"></audio>
+        </div>
+
+        <button id="mute-btn" class="mute-btn" title="Mute/Unmute"></button>
+
+        <div class="content-wrapper">
+            <div class="profile-section">
+                <div id="location-container" class="location-container">
+                    <span id="location-icon" class="stat-icon"></span>
+                    <span id="location" class="stat-value"></span>
+                </div>
+                
+                <div class="profile-header">
+                    <div class="profile-image-container">
+                        <img id="profile-image" class="profile-image" alt="Profile">
+                        <div id="bio-container" class="bio-container">
+                            <p id="bio" class="bio"></p>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h1 id="display-name" class="display-name"></h1>
+                        <p id="username" class="username"></p>
+                        <div id="badges-container" class="badges-container"></div>
+                    </div>
+                </div>
+
+                <div id="links-container" class="links-container"></div>
+            </div>
+
+            <div id="music-player" class="music-player hidden">
+                <div class="music-player-content">
+                    <img id="album-art" class="album-art" alt="Album Art">
+                    <div class="music-info">
+                        <p id="song-title" class="song-title"></p>
+                        <p id="artist-name" class="artist-name"></p>
+                        <div class="music-controls">
+                            <div class="progress-bar-container">
+                                <div class="progress-bar">
+                                    <div id="progress-fill" class="progress-fill"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span id="current-time">0:00</span>
+                                    <span id="total-time">0:00</span>
+                                </div>
+                            </div>
+                            <div class="control-buttons">
+                                <button id="prev-btn" class="control-btn" disabled style="opacity: 0.3; cursor: not-allowed; pointer-events: none;">⏮</button>
+                                <button id="play-pause-btn" class="control-btn">▶</button>
+                                <button id="next-btn" class="control-btn" disabled style="opacity: 0.3; cursor: not-allowed; pointer-events: none;">⏭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="custom-cursor" class="custom-cursor"></div>
+        <canvas id="cursor-canvas" class="cursor-canvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

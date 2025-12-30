@@ -1,0 +1,803 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::selection {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+::-moz-selection {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+:root {
+    --text-color: #ffffff;
+    --secondary-text-color: #b0b0b0;
+    --accent-color: #00aaff;
+    --background-overlay: rgba(0, 0, 0, 0.4);
+    --transition-speed: 0.3s;
+}
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-color);
+    cursor: auto;
+    position: relative;
+}
+/* ============================================
+   LOADING SCREEN
+   ============================================ */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+    cursor: pointer;
+}
+.loading-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1;
+}
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.loading-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.loading-text {
+    color: var(--text-color);
+    font-size: 24px;
+    font-weight: 500;
+    animation: pulse 1.5s ease-in-out infinite;
+    cursor: pointer;
+    user-select: none;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+/* ============================================
+   BACKGROUND
+   ============================================ */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+.particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-overlay);
+    z-index: 1;
+}
+.background-video,
+.background-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 0;
+    transform-style: flat;
+}
+.background-image {
+    display: none;
+}
+.background-video {
+    display: none;
+}
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+.main-container {
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity var(--transition-speed) ease;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    overflow: visible;
+    isolation: isolate;
+}
+.main-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.content-wrapper {
+    max-width: 600px;
+    width: 100%;
+    animation: unboxFromCenter 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+    overflow: visible;
+    position: relative;
+    z-index: 20;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.3s ease-out;
+}
+@keyframes unboxFromCenter {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateZ(0);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.05) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateZ(0);
+    }
+}
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) translateZ(0);
+    }
+}
+/* ============================================
+   PROFILE SECTION
+   ============================================ */
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    transform: translateZ(0);
+    will-change: transform;
+    animation: popOut 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+    overflow: hidden;
+    min-height: fit-content;
+    height: auto;
+}
+.profile-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 65px;
+    text-align: left;
+    position: relative;
+}
+.profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.location-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: 800;
+}
+.location-container .stat-icon {
+    font-size: 16px;
+}
+.profile-image-container {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: zoomIn 0.8s ease-out;
+}
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 170, 255, 0.7);
+}
+.display-name {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 0;
+    color: var(--text-color);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.display-name.name-glow {
+    animation: nameGlow 3s ease-in-out infinite;
+}
+@keyframes nameGlow {
+    0%, 100% {
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 170, 255, 0.3);
+    }
+    50% {
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 170, 255, 0.6), 0 0 40px rgba(0, 170, 255, 0.4);
+    }
+}
+.username {
+    font-size: 15px;
+    color: var(--secondary-text-color);
+    margin-bottom: 2px;
+    animation: none !important;
+    transform: none !important;
+}
+.bio-container {
+    position: absolute;
+    top: 115px;
+    left: 0;
+    right: 0;
+    min-height: 20px;
+    max-height: 55px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+    pointer-events: none;
+}
+.bio {
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 1.4;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.bio .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 16px;
+    background: var(--accent-color);
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+.stats-container {
+    display: none;
+}
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--secondary-text-color);
+}
+.stat-icon {
+    font-size: 18px;
+}
+.stat-value {
+    font-weight: 500;
+}
+/* ============================================
+   BADGES
+   ============================================ */
+.badges-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+.badge {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: visible;
+    flex-shrink: 0;
+}
+.badge img,
+.badge svg,
+.badge iconify-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.badge img {
+    filter: none;
+}
+.badge:hover img {
+    filter: drop-shadow(0 0 8px currentColor);
+}
+.badge:hover {
+    transform: scale(1.1);
+}
+.badge-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-bottom: 5px;
+}
+.badge-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+}
+.badge:hover .badge-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.badge-rotate:hover {
+    animation: rotate 0.5s ease-in-out;
+}
+@keyframes rotate {
+    from { transform: rotate(0deg) scale(1.1); }
+    to { transform: rotate(360deg) scale(1.1); }
+}
+.badge-glow:hover {
+    box-shadow: 0 0 15px currentColor;
+}
+.badge:hover {
+    filter: drop-shadow(0 0 8px currentColor);
+}
+/* ============================================
+   LINKS (Icon Buttons)
+   ============================================ */
+.links-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 100%;
+    margin: 12px auto 0;
+    animation: popOut 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+}
+.link-item {
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: visible;
+    border: none;
+    flex-shrink: 0;
+}
+.link-item:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+.link-item:hover .link-icon {
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor) brightness(1.3);
+}
+.link-item:hover .link-icon img,
+.link-item:hover .link-icon svg,
+.link-item:hover .link-icon iconify-icon {
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor);
+}
+.link-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.link-item.scale:hover {
+    transform: scale(1.05) translateY(-2px);
+}
+.link-item.glow:hover {
+    box-shadow: 0 10px 30px currentColor;
+}
+.link-item.slide:hover {
+    transform: translateX(10px) translateY(-2px);
+}
+.link-item.bounce:hover {
+    animation: bounce 0.5s ease;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(-2px); }
+    50% { transform: translateY(-8px); }
+}
+.link-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 6px;
+    filter: brightness(1);
+    transition: all 0.3s ease;
+}
+.link-icon iconify-icon,
+.link-icon svg {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+}
+.badge iconify-icon,
+.badge svg {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+}
+.link-title {
+    display: none;
+}
+.link-hover-text {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--text-color);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-bottom: 8px;
+    z-index: 10;
+}
+.link-hover-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+}
+.link-item:hover .link-hover-text {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+/* ============================================
+   MUTE BUTTON
+   ============================================ */
+.mute-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.mute-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+}
+.mute-btn.muted {
+    opacity: 0.6;
+}
+/* ============================================
+   MUSIC PLAYER (Compact)
+   ============================================ */
+.music-player {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 15px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: fit-content;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateZ(0);
+    will-change: transform;
+    position: relative;
+    animation: popOut 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
+}
+.music-player.hidden {
+    display: none;
+}
+.music-player-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+.album-art {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    align-self: flex-start;
+    position: absolute;
+    left: 0;
+}
+.music-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 62px;
+}
+.song-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--text-color);
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+}
+.artist-name {
+    font-size: 11px;
+    color: var(--secondary-text-color);
+    margin-bottom: 8px;
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+}
+.progress-bar-container {
+    margin-bottom: 6px;
+    width: 100%;
+    max-width: 250px;
+}
+.progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--accent-color);
+    width: 0%;
+    transition: width 0.1s linear;
+    border-radius: 2px;
+}
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--secondary-text-color);
+}
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    width: 100%;
+}
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-color);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.15);
+}
+/* ============================================
+   CURSOR EFFECTS
+   ============================================ */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+    display: none;
+}
+.custom-cursor.active {
+    display: block;
+}
+.cursor-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    display: block;
+}
+* {
+    cursor: auto !important;
+}
+body {
+    cursor: auto !important;
+}
+a, button, .link-item, .badge, .control-btn, .mute-btn, .progress-bar {
+    cursor: pointer !important;
+}
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 10px;
+    }
+    .display-name {
+        font-size: 28px;
+    }
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+    .link-item {
+        padding: 15px 20px;
+    }
+    .music-player-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .stats-container {
+        gap: 20px;
+    }
+}
+@media (max-width: 480px) {
+    .display-name {
+        font-size: 24px;
+    }
+    .link-item {
+        padding: 12px 16px;
+    }
+    .badges-container {
+        gap: 10px;
+    }
+    .badge {
+        width: 40px;
+        height: 40px;
+    }
+}
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.hidden {
+    display: none !important;
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.zoom-in {
+    animation: zoomIn 0.5s ease-out;
+}
