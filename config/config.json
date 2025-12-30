@@ -90,7 +90,7 @@
       },
       // Wave effect (per letter)
       "wave": {
-        "enabled": true,
+        "enabled": false,
         "minSpeed": 2,
         "maxSpeed": 3.5
       }
@@ -111,14 +111,9 @@
       "color": "#00ff00"
     },
     {
-      "icon": "mdi:diamond-stone",
-      "text": "Premium Member",
-      "color": "#ff00ff"
-    },
-    {
-      "icon": "mdi:trophy",
-      "text": "Top Contributor",
-      "color": "#00aaff"
+      "icon": "game-icons:ice-cube",
+      "text": "Just Iceyy",
+      "color": "#03b1fc"
     }
   ],
   // ============================================
@@ -129,37 +124,30 @@
       // Link title
       "title": "GitHub",
       // Link URL
-      "url": "https://github.com/iceyy",
+      "url": "https://github.com/iceyy0044",
       // Custom icon - Use Iconify icon name (e.g., "mdi:github") or local file/URL
       // Iconify format: "collection:icon-name" (e.g., "mdi:github", "ic:baseline-discord")
       // Browse icons at: https://iconify.design/
       // Leave empty to use default icon based on platform
       "icon": "mdi:github",
       // Hover text (shown on hover)
-      "hoverText": "Check out my code!",
+      "hoverText": "Check out my github!",
       // Link color (optional)
       "color": "#ffffff"
     },
     {
       "title": "Discord",
-      "url": "https://discord.gg/example",
+      "url": "https://discord.gg/XWrHNfbVN9",
       "icon": "ic:baseline-discord",
-      "hoverText": "Join our community!",
+      "hoverText": "Join Argonix.eu Discord",
       "color": "#5865F2"
     },
     {
-      "title": "Portfolio",
-      "url": "https://iceyy.dev",
+      "title": "Argonix",
+      "url": "https://argonix.eu",
       "icon": "fluent:globe-12-regular",
-      "hoverText": "View my work",
-      "color": "#00aaff"
-    },
-    {
-      "title": "Instagram",
-      "url": "https://instagram.com/iceyy",
-      "icon": "mdi:instagram",
-      "hoverText": "Follow me on Instagram",
-      "color": "#E4405F"
+      "hoverText": "Checkout Argonix.eu Hosting",
+      "color": "#fca103"
     }
   ],
   // ============================================
@@ -192,7 +180,7 @@
     // Particle settings (if type is "particles")
     "particles": {
       // Number of particles
-      "count": 200,
+      "count": 0,
       // Particle color
       "color": "#00aaff",
       // Particle size
